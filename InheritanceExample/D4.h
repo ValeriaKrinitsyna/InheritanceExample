@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-class D4 : public D2, private D1
+class D4 : private D3, protected D1
 {
 	int e;
 public:

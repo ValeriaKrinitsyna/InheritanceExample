@@ -2,7 +2,7 @@
 #include "D3.h"
 
 
-D3::D3(int x, int y, int z, int i, int j) :D1(y, z), D2(i, j)
+D3::D3(int x, int y) : D2(x, y)
 {
 	d = x;
 	cout << "object of " << typeid(*this).name() << " was created\n";

@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-class D2 : private B
+class D2 : protected B
 {
 	int c;
 public:
