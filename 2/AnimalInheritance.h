@@ -1,0 +1,95 @@
+#pragma once
+#include <iostream>
+#include <string>
+using namespace std;
+
+// класс, описывающий существо
+class creature
+{
+private:
+	string title;
+	double mass; //kg
+protected:
+	creature() : mass(0.0) {}
+	creature(const creature& obj) : title(obj.title), mass(obj.mass) {}
+	creature(const string& _title, double _mass) : title(_title), mass(_mass) {}
+	// деструктор (объявлен как виртуальный)
+	virtual ~creature() { cout << "creature deleted" << endl << endl; }
+	// виртуальная функция для вывода информации об объекте
+	virtual void _print() const { cout << "title: " << title << ", mass: " << mass; }
+public:
+
+	// открытая функция для вывода информации об объекте
+	void print() const
+	{
+		cout << typeid(*this).name() << " : (";
+		// вызов виртуальной функции
+		// т.к. функция _print виртуальная, вызываться она будет
+		// не только из текущего класса, но и из производных,
+		// в зависимости от того, для какого объекта осуществляется вызов
+		_print();
+		cout << ")" << endl;
+	}
+};
+
+// класс animal наследуется от класса creature
+class animal : public creature
+{
+private:
+	double speed; //m/s
+public:
+	animal() : creature() {}
+	animal(const animal& obj) : creature(obj), speed(obj.speed) {}
+	animal(const string& _title, double _mass, double _speed)
+		: creature(_title, _mass), speed(_speed) {}
+	~animal() { cout << "animal deleted" << endl; }
+protected:
+	// виртуальная функция _print переопределяется в производном //классе
+	void _print() const
+	{
+		creature::_print();
+		cout << " , speed: " << speed;
+	}
+};
+
+// класс bird наследуется от класса animal
+class bird : public animal
+{
+private:
+	double topfly; //km
+public:
+	bird() : animal() {}
+	bird(const bird& obj) : animal(obj), topfly(obj.topfly) {}
+	bird(const string& _title, double _mass, double _speed, double _topfly)
+		: animal(_title, _mass, _speed), topfly(_topfly) {}
+	~bird() { cout << "bird deleted" << endl; }
+protected:
+	// виртуальная функция _print переопределяется в классе bird
+	void _print() const
+	{
+		animal::_print();
+		cout << ", topfly: " << topfly;
+	}
+};
+
+// класс fish наследуется от класса animal
+class fish : public animal
+{
+private:
+	double maxdeep; //km
+public:
+	fish() : animal() {}
+	fish(const fish& obj) : animal(obj), maxdeep(obj.maxdeep) {}
+	fish(const string& _title, double _mass, double _speed, double _maxdeep)
+		: animal(_title, _mass, _speed), maxdeep(_maxdeep) {}
+	~fish() { cout << "fish deleted" << endl; }
+
+protected:
+	// виртуальная функция _print переопределяется в классе fish
+	void _print() const
+	{
+		animal::_print();
+		cout << ", maxdeep: " << maxdeep;
+	}
+};
+
