@@ -62,7 +62,7 @@ protected:
 };
 
 // класс bird наследуетс€ от класса animal
-class bird : public animal
+class bird : public virtual animal
 {
 private:
 	double topfly; //km
@@ -73,7 +73,7 @@ public:
 		: animal(_title, _mass, _speed), topfly(_topfly) {}
 	~bird() { cout << "bird deleted" << endl; }
 protected:
-	// виртуальна€ функци€ _print переопредел€етс€ в классе bird
+	// виртуальна€ функци€ _print переопредел€етс€ в классе bird 
 	void _print() const
 	{
 		animal::_print();
@@ -103,7 +103,7 @@ protected:
 };
 
 // класс predator наследуетс€ от animal
-class predator : public animal
+class predator : public virtual animal
 {
 protected:
 	predator() {}
@@ -121,17 +121,13 @@ class eagle : public bird, public predator
 {
 public:
 	eagle() : bird() {}
-	eagle(const eagle& obj) : bird(obj) {}
+	eagle(const eagle& obj) : bird(obj), animal(obj) {}
 	eagle(double _mass, double _speed, double _topfly)
-		: bird("ќрел", _mass, _speed, _topfly) {}
-	// определение тела функции hunt
-	// т.к. hunt определена, класс eagle Ц Ќ≈абстракный
+		: bird("", 0, 0, _topfly), animal("ќрел", _mass, _speed) {}
+
 	bool hunt(const animal& obj)
 	{
-		// функци€ get_mass может наследоватьс€ классом eagle из класса animal
-		// и через класс bird, и через класс predator
-		// нужно указать, что она наследуетс€ через bird
-		return obj.get_mass() < bird::get_mass()
-			&& obj.get_speed() < bird::get_speed();
+		return obj.get_mass() < get_mass()
+			&& obj.get_speed() < get_speed();
 	}
 };
