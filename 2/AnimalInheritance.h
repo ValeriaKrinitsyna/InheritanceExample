@@ -17,6 +17,7 @@ protected:
 	virtual ~creature() { cout << "creature deleted" << endl << endl; }
 	// виртуальная функция для вывода информации об объекте
 	virtual void _print() const { cout << "title: " << title << ", mass: " << mass; }
+	
 public:
 
 	// открытая функция для вывода информации об объекте
@@ -29,6 +30,10 @@ public:
 		// в зависимости от того, для какого объекта осуществляется вызов
 		_print();
 		cout << ")" << endl;
+	}
+	double get_mass() const
+	{
+		return mass;
 	}
 };
 
@@ -43,8 +48,12 @@ public:
 	animal(const string& _title, double _mass, double _speed)
 		: creature(_title, _mass), speed(_speed) {}
 	~animal() { cout << "animal deleted" << endl; }
+	double get_speed() const
+	{
+		return speed;
+	}
 protected:
-	// виртуальная функция _print переопределяется в производном //классе
+	// виртуальная функция _print переопределяется в производном классе
 	void _print() const
 	{
 		creature::_print();
@@ -93,3 +102,36 @@ protected:
 	}
 };
 
+// класс predator наследуется от animal
+class predator : public animal
+{
+protected:
+	predator() {}
+public:
+	~predator() {}
+	// чисто виртуальная функция hunt будет определять
+	// посредством производных классов,
+	// удастся ли хищнику поохотиться на жертву (obj)
+	virtual bool hunt(const animal& obj) = 0;
+	// т.к. hunt чисто виртуальная, класс predator является абстрактным
+};
+
+// используется множественное наследование, т.к. орел – и птица, и хищник
+class eagle : public bird, public predator
+{
+public:
+	eagle() : bird() {}
+	eagle(const eagle& obj) : bird(obj) {}
+	eagle(double _mass, double _speed, double _topfly)
+		: bird("Орел", _mass, _speed, _topfly) {}
+	// определение тела функции hunt
+	// т.к. hunt определена, класс eagle – НЕабстракный
+	bool hunt(const animal& obj)
+	{
+		// функция get_mass может наследоваться классом eagle из класса animal
+		// и через класс bird, и через класс predator
+		// нужно указать, что она наследуется через bird
+		return obj.get_mass() < bird::get_mass()
+			&& obj.get_speed() < bird::get_speed();
+	}
+};
