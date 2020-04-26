@@ -3,20 +3,36 @@
 
 #include "stdafx.h"
 #include "Game.h"
+#include "string"
+using namespace std;
 
 
 int main()
 {
-	setlocale(0, "Rus");
-	MythicalAnimal unicorn("Единорог", 100, 90);
-	HumanoidCharacter siren("Сирена", 60, 120);
-	MagicCharacter phoenix("Феникс", 40, 100, "возрождение из пепла");
-	MagicThing harp("Арфа", 30, "усыпление слушателей");
+	MythicalAnimal unicorn("Unicorn", 50, 120, 50, 100);
+	Humanoid troll("Troll", 300, 60, 200, 3, 350);
+	Wizard merlin("Merlin", 100, 100, 100, 5, 50, "magic");
+	MagicThing harp("Harp", 150, "puts listeners to sleep");
+
 	unicorn.print();
-	siren.print();
-	phoenix.print();
-	harp.print();
+	unicorn.move(100, 100);
+	unicorn.draw();
+	unicorn.print();
 	cout << endl;
+
+	troll.print();
+	troll.move(0, 0);
+	troll.print();
+	cout << endl;
+
+	merlin.print();
+	merlin.move(100, 100);
+	merlin.draw();
+	merlin.print();
+	cout << endl;
+
+	harp.print();
+
 	system("pause");
     return 0;
 }

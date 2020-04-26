@@ -1,37 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="GameObject" Collapsed="true">
-    <Position X="1.75" Y="0.5" Width="1.5" />
+    <Position X="2.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AJQAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAABQ=</HashCode>
+      <HashCode>ABQAAAAAQAAAAAAAAAIAAAAAAAAAAAAAAAAAAAIAAAQ=</HashCode>
+      <FileName>Game.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Creature" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAIAAAwAAAAAAAAQABgAGAAAAQ=</HashCode>
       <FileName>Game.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MythicalAnimal" Collapsed="true">
-    <Position X="0.5" Y="1.75" Width="1.5" />
+    <Position X="2.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAAAAAAACAAAIAAAAAAAQAAQAAAAAAAAAAAAQ=</HashCode>
       <FileName>Game.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HumanoidCharacter" Collapsed="true">
+  <Class Name="Humanoid" Collapsed="true">
     <Position X="0.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAQAAAAAAAAAAgAQ=</HashCode>
+      <HashCode>AAAAAAAAAAAAQACAAAIEAAAAAAAAAQACAAAAAAAAAAQ=</HashCode>
       <FileName>Game.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MagicCharacter" Collapsed="true">
+  <Class Name="Wizard" Collapsed="true">
     <Position X="0.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAFAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAABAAAACAAAIAAAAAAAEAAAAAAAIAAAAAAAQ=</HashCode>
       <FileName>Game.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MagicThing" Collapsed="true">
-    <Position X="2.75" Y="1.75" Width="1.5" />
+    <Position X="5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQEAQ=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAQAAAABAAAAAAQEAQ=</HashCode>
       <FileName>Game.h</FileName>
     </TypeIdentifier>
   </Class>
